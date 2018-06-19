@@ -1,0 +1,17 @@
+#page-header{
+    background-color: darkgreen;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    margin: 0px 0 20px;
+    margin-top: 0px;
+    border-bottom: 1px solid #eee;
+}
+
+#shoppingCartImage{
+    float: right;
+    padding-right: 80px;
+}
+
+h3{
+    padding-left: 100px;
+}

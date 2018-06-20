@@ -18,7 +18,9 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(dataActions.getItemsList());
+        if(!(this.props && this.props.items && this.props.items.length)){
+            this.props.dispatch(dataActions.getItemsList());
+        }
     }
 
     componentWillReceiveProps(nextprops) {
@@ -27,14 +29,14 @@ class HomePage extends React.Component {
         }
     }
 
-    initialize(items) {
-        let vegetableList = items[0];
-        if(vegetableList) {
+    initialize() {
+        let vegetableList = this.props.items[0];
+        if(!this.state.vegetableList.length && !!this.props.items.length) {
             let myVegetableList = [];
             for(let i=0;i<=29; i++) {
             myVegetableList.push(vegetableList[i]);
             }
-            this.setState({vegetableList:myVegetableList})
+            this.setState({vegetableList:myVegetableList});
         }
     }
 
@@ -49,6 +51,7 @@ class HomePage extends React.Component {
     }
     
     render() {
+        this.initialize();
         return(
             <div>
             <Header cartItems={this.props.cartItems} getSum={this.getSum}/>
